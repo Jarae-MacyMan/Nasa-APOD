@@ -8,9 +8,8 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
 var bcrypt = require("bcryptjs");
 
-var jwt = require("jsonwebtoken");
+var jwt = require("jsonwebtoken"); //const config = require("config")
 
-var config = require("config");
 
 require("dotenv").config();
 
