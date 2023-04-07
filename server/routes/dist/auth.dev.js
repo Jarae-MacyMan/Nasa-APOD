@@ -26,11 +26,11 @@ router.get("/login/failed", function (req, res) {
 });
 router.get("/google", passport.authenticate("google", ["profile", "email"]));
 router.get("/google/callback", passport.authenticate("google", {
-  successRedirect: "http://localhost:3000/",
+  successRedirect: "https://nasa-apod-apis.vercel.app/",
   failureRedirect: "/login/failed"
 }));
 router.get("/logout", function (req, res) {
   req.logout();
-  res.redirect("http://localhost:3000/");
+  res.redirect("https://nasa-apod-apis.vercel.app/");
 });
 module.exports = router;
