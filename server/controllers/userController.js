@@ -1,6 +1,8 @@
 const bcrypt = require("bcryptjs")
 const jwt = require("jsonwebtoken")
 const config = require("config")
+require("dotenv").config()
+
 
 const User = require("../models/user")
 
@@ -29,11 +31,11 @@ class userContoller {
                 const token = jwt.sign({
                     email: existingUser.email,
                     id: existingUser._id
-                }, config.get("JWT_SECRET"), {expiresIn: "1h"})
+                }, process.env.JWT_SECRET, {expiresIn: "1h"})
         
                 res
                     .status(200)
-                    .json({result: existingUser, token})
+                    .json({result: existingUser, token}) 
             // } catch (err) {
             //     res
             //         .status(500)
@@ -66,7 +68,7 @@ class userContoller {
                 const token = jwt.sign({
                     email: result.email,
                     id: result._id
-                }, config.get("JWT_SECRET"), {expiresIn: "1h"})
+                }, process.env.JWT_SECRET, {expiresIn: "1h"})
 
                 res
                     .status(200)

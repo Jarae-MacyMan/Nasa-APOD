@@ -12,6 +12,8 @@ var jwt = require("jsonwebtoken");
 
 var config = require("config");
 
+require("dotenv").config();
+
 var User = require("../models/user");
 
 var userContoller =
@@ -80,7 +82,7 @@ function () {
               token = jwt.sign({
                 email: existingUser.email,
                 id: existingUser._id
-              }, config.get("JWT_SECRET"), {
+              }, process.env.JWT_SECRET, {
                 expiresIn: "1h"
               });
               res.status(200).json({
@@ -156,7 +158,7 @@ function () {
               token = jwt.sign({
                 email: result.email,
                 id: result._id
-              }, config.get("JWT_SECRET"), {
+              }, process.env.JWT_SECRET, {
                 expiresIn: "1h"
               });
               res.status(200).json({

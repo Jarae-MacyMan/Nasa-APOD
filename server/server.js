@@ -7,6 +7,7 @@ const userRoutes = require("./routes/userRoutes")
 const cookieSession = require("cookie-session");
 const passportStrategy = require("./passport");
 const mongoose = require('mongoose')
+require("dotenv").config()
 
 var bodyParser = require('body-parser')
 var jsonParser = bodyParser.json()
@@ -40,7 +41,7 @@ app.use("/auth", authRoute);
 app.use("/users", userRoutes)
 
 
-const MONGOOSE_URL = "mongodb+srv://sjaraebr:T1m3K1lz@apodcluster.gpflfzk.mongodb.net/apodapp?retryWrites=true&w=majority"
+const MONGOOSE_URL = process.env.MONGOOSE_URL
 
 
 const port = process.env.PORT || 8080;

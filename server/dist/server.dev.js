@@ -18,6 +18,8 @@ var passportStrategy = require("./passport");
 
 var mongoose = require('mongoose');
 
+require("dotenv").config();
+
 var bodyParser = require('body-parser');
 
 var jsonParser = bodyParser.json();
@@ -39,7 +41,7 @@ app.use(cors({
 }));
 app.use("/auth", authRoute);
 app.use("/users", userRoutes);
-var MONGOOSE_URL = "mongodb+srv://sjaraebr:T1m3K1lz@apodcluster.gpflfzk.mongodb.net/apodapp?retryWrites=true&w=majority";
+var MONGOOSE_URL = process.env.MONGOOSE_URL;
 var port = process.env.PORT || 8080;
 mongoose.connect(MONGOOSE_URL, {
   useNewUrlParser: true
