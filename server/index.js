@@ -40,6 +40,10 @@ app.use(
 app.use("/auth", authRoute);
 app.use("/users", userRoutes)
 
+app.get('/', (req, res) => {
+	res.send('Hello World!')
+  })
+
 
 const MONGOOSE_URL = process.env.MONGOOSE_URL
 

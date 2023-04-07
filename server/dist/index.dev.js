@@ -41,6 +41,9 @@ app.use(cors({
 }));
 app.use("/auth", authRoute);
 app.use("/users", userRoutes);
+app.get('/', function (req, res) {
+  res.send('Hello World!');
+});
 var MONGOOSE_URL = process.env.MONGOOSE_URL;
 var port = process.env.PORT || 8080;
 mongoose.connect(MONGOOSE_URL, {
