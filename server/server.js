@@ -40,7 +40,7 @@ app.use("/auth", authRoute);
 app.use("/users", userRoutes)
 
 
-const MONGOOSE_URL = "mongodb+srv://sjaraebr:T1m3K1lz@apodcluster.gpflfzk.mongodb.net/apodApp?retryWrites=true&w=majority"
+const MONGOOSE_URL = "mongodb+srv://sjaraebr:T1m3K1lz@apodcluster.gpflfzk.mongodb.net/apodapp?retryWrites=true&w=majority"
 
 
 const port = process.env.PORT || 8080;

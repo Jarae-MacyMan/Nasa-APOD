@@ -6,6 +6,8 @@ import Button from '@mui/material/Button';
 import AppBar from '@mui/material/AppBar';
 import { Toolbar } from "@mui/material";
 import Grid from '@mui/material/Grid';
+import Context from "../../context/context";
+
 
 
 
@@ -17,6 +19,8 @@ const axios = require('axios')
 
 
 function Home(userDetails) {
+
+	const context = useContext(Context);
 
 	const user = userDetails.user;
 	const [nasaData, setNasaData] = useState({})
@@ -42,9 +46,8 @@ function Home(userDetails) {
 		picOfDay();
 	}, []);
 
-	console.log(nasaData)
 
-
+	//console.log(user.result.username)
 
 	return (
 		<div >
@@ -52,7 +55,7 @@ function Home(userDetails) {
 			<AppBar position="fixed">
             <Toolbar>
             <Typography variant="h6" noWrap component="div">
-              Hello {user.name}
+              Hello {user.name ? user.name : user.result.username }
             </Typography>
 
 			<Button sx={{ml:140}} variant="contained" color="secondary" onClick={logout}>

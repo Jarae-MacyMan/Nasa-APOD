@@ -8,77 +8,86 @@ const User = require("../models/user")
 class userContoller {
 
 
-static async signinController (req, res) {
-   
-        // normal-auth
-        const {email, password} = req.body;
-
-        if (email === "" || password === "") 
-            return res.status(400).json({message: "Invalid field!"});
-        // try { 
-            const existingUser = await User.findOne({email})
+    static async signinController (req, res) {
     
-            if (!existingUser) 
-                return res.status(404).json({message: "User does not exist!"})
+            // normal-auth
+            const {email, password} = req.body;
+
+            if (email === "" || password === "") 
+                return res.status(400).json({message: "Invalid field!"});
+            // try { 
+                const existingUser = await User.findOne({email})
+        
+                if (!existingUser) 
+                    return res.status(404).json({message: "User does not exist!"})
+        
+                const isPasswordOk = await bcrypt.compare(password, existingUser.password);
+        
+                if (!isPasswordOk) 
+                    return res.status(400).json({message: "Invalid credintials!"})
+        
+                const token = jwt.sign({
+                    email: existingUser.email,
+                    id: existingUser._id
+                }, config.get("JWT_SECRET"), {expiresIn: "1h"})
+        
+                res
+                    .status(200)
+                    .json({result: existingUser, token})
+            // } catch (err) {
+            //     res
+            //         .status(500)
+            //         .json({message: "Something went wrong!"})
+            // }
+        
     
-            const isPasswordOk = await bcrypt.compare(password, existingUser.password);
-    
-            if (!isPasswordOk) 
-                return res.status(400).json({message: "Invalid credintials!"})
-    
-            const token = jwt.sign({
-                email: existingUser.email,
-                id: existingUser._id
-            }, config.get("JWT_SECRET"), {expiresIn: "1h"})
-    
-            res
-                .status(200)
-                .json({result: existingUser, token})
-        // } catch (err) {
-        //     res
-        //         .status(500)
-        //         .json({message: "Something went wrong!"})
-        // }
-    
-  
-}
+    }
 
-static async signupController (req, res) {
-    
-        // normal form signup
+    static async signupController (req, res) {
+        
+            // normal form signup
 
-        const { username, email, password } = req.body;  
+            const { username, email, password } = req.body;  
 
 
-        //try {
-            if (email === "" || password === "" || username === "" && password.length >= 4) 
-                return res.status(400).json({message: "Invalid field!"})
+            //try {
+                if (email === "" || password === "" || username === "" && password.length >= 4) 
+                    return res.status(400).json({message: "Invalid field!"})
 
-            const existingUser = await User.findOne({email}) 
+                const existingUser = await User.findOne({email}) 
 
-            if (existingUser) 
-                return res.status(400).json({message: "User already exist!"})
+                if (existingUser) 
+                    return res.status(400).json({message: "User already exist!"})
 
-            const hashedPassword = await bcrypt.hash(password, 12)
+                const hashedPassword = await bcrypt.hash(password, 12)
 
-            const result = await User.create({email, password: hashedPassword, username})
+                const result = await User.create({email, password: hashedPassword, username})
 
-            const token = jwt.sign({
-                email: result.email,
-                id: result._id
-            }, config.get("JWT_SECRET"), {expiresIn: "1h"})
+                const token = jwt.sign({
+                    email: result.email,
+                    id: result._id
+                }, config.get("JWT_SECRET"), {expiresIn: "1h"})
 
-            res
-                .status(200)
-                .json({result, token})
-        // } catch (err) {
-        //     res
-        //         .status(500)
-        //         .json({message: "Something went wrong!"})
-        // }
+                res
+                    .status(200)
+                    .json({result, token})
+            // } catch (err) {
+            //     res
+            //         .status(500)
+            //         .json({message: "Something went wrong!"})
+            // }
 
-    
-}
+        
+    }
+
+    static async getVerified (req, res) {
+        try {
+            return res.json(true);
+        } catch (error) {
+            console.error(error);
+            return res.status(500).send("Server Error");
+        }
+    }
 }
 
 module.exports = userContoller

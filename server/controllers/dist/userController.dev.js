@@ -175,6 +175,29 @@ function () {
         }
       });
     }
+  }, {
+    key: "getVerified",
+    value: function getVerified(req, res) {
+      return regeneratorRuntime.async(function getVerified$(_context3) {
+        while (1) {
+          switch (_context3.prev = _context3.next) {
+            case 0:
+              _context3.prev = 0;
+              return _context3.abrupt("return", res.json(true));
+
+            case 4:
+              _context3.prev = 4;
+              _context3.t0 = _context3["catch"](0);
+              console.error(_context3.t0);
+              return _context3.abrupt("return", res.status(500).send("Server Error"));
+
+            case 8:
+            case "end":
+              return _context3.stop();
+          }
+        }
+      }, null, null, [[0, 4]]);
+    }
   }]);
 
   return userContoller;

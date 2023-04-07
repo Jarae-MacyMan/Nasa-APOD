@@ -1,5 +1,6 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useContext, useEffect, useState } from "react";
+import Context from "../../context/context";
 import Box from '@mui/material/Box';
 import Card from '@mui/material/Card';
 import Typography from '@mui/material/Typography';
@@ -17,6 +18,8 @@ import Stack from '@mui/material/Stack';
 const axios = require('axios')
 
 function Login() {
+	const context = useContext(Context);
+
 
 	const [inputs, setInputs] = useState({
 		email: '',
@@ -55,6 +58,8 @@ function Login() {
 				const parseRes = await response.json();
 
 				console.log(parseRes)
+				context.setUser(parseRes);
+
 				
 			  } catch (error) {
 				console.error(error.message);

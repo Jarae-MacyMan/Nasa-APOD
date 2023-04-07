@@ -1,8 +1,8 @@
 import { Link,useNavigate } from "react-router-dom";
-import React, {useState} from "react";
+import React, {useState, useContext} from "react";
 import {useDispatch} from 'react-redux';
 import {signup} from "../../redux/actions/auth";
-
+import Context from "../../context/context";
 import Box from '@mui/material/Box';
 import Card from '@mui/material/Card';
 import Typography from '@mui/material/Typography';
@@ -15,6 +15,10 @@ import Stack from '@mui/material/Stack';
 
 
 function Signup() {
+	const context = useContext(Context);
+
+
+
 	const nagivate = useNavigate();
     const dispatch = useDispatch();
 
@@ -44,6 +48,8 @@ function Signup() {
 				const parseRes = await response.json();
 
 				console.log(parseRes)
+				context.setUser(parseRes);
+
 				
 			  } catch (error) {
 				console.error(error.message);

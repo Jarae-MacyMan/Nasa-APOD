@@ -39,7 +39,7 @@ app.use(cors({
 }));
 app.use("/auth", authRoute);
 app.use("/users", userRoutes);
-var MONGOOSE_URL = "mongodb+srv://sjaraebr:T1m3K1lz@apodcluster.gpflfzk.mongodb.net/apodApp?retryWrites=true&w=majority";
+var MONGOOSE_URL = "mongodb+srv://sjaraebr:T1m3K1lz@apodcluster.gpflfzk.mongodb.net/apodapp?retryWrites=true&w=majority";
 var port = process.env.PORT || 8080;
 mongoose.connect(MONGOOSE_URL, {
   useNewUrlParser: true

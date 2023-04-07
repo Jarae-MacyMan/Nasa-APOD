@@ -2,6 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import {BrowserRouter} from 'react-router-dom';
 import App from './App';
+import ContextProvider from "./context/ContextProvider";
+
 
 import { Provider } from 'react-redux';
  import { reducers } from "./redux/reducers"
@@ -14,6 +16,7 @@ const store = createStore(reducers, {}, composeEnhancers(applyMiddleware(thunk))
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
+  <ContextProvider>
   <React.StrictMode>
     <Provider store={store}>
     <BrowserRouter>
@@ -21,5 +24,6 @@ root.render(
     </BrowserRouter>
     </Provider>
   </React.StrictMode>
+  </ContextProvider>
 );
 
