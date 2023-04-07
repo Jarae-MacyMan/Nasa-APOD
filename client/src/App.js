@@ -15,13 +15,15 @@ function App() {
 
 	const getUser = async () => {
 		try {
-			const url = `http://localhost:8080/auth/login/success`;
+			const url = `https://nasa-apod-apis.vercel.app/auth/login/success`;
 			const { data } = await axios.get(url, { withCredentials: true });
 				context.setUser(data.user._json);
 		} catch (err) {
 			console.log(err);
 		}
 	};
+	
+	//http://localhost:8080/
 
 	useEffect(() => {
 		getUser();

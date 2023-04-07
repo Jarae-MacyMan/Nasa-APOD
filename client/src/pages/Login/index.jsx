@@ -30,7 +30,7 @@ function Login() {
 
 	const googleAuth = () => {
 		window.open(
-			`http://localhost:8080/auth/google/callback`,
+			`https://nasa-apod-apis.vercel.app/auth/google/callback`,
 			"_self"
 		);
 	};
@@ -50,7 +50,7 @@ function Login() {
 
             try {
 				const body = { email, password };
-				const response = await fetch("http://localhost:8080/users/signin", {
+				const response = await fetch("https://nasa-apod-apis.vercel.app/users/signin", {
 				  method: "POST",
 				  headers: { "Content-Type": "application/json" },
 				  body: JSON.stringify(body),

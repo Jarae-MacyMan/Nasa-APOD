@@ -10,7 +10,7 @@ var _axios = _interopRequireDefault(require("axios"));
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
 var API = _axios["default"].create({
-  baseURL: "http://localhost:8080"
+  baseURL: "https://nasa-apod-apis.vercel.app/"
 });
 
 API.interceptors.request.use(function (req) {
