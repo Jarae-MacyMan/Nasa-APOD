@@ -25,14 +25,14 @@ router.get("/google", passport.authenticate("google", ["profile", "email"]));
 router.get(
 	"/google/callback",
 	passport.authenticate("google", {
-		successRedirect: "https://nasa-apod-apis.vercel.app/",
+		successRedirect: "https://nasa-apod-rho.vercel.app/",
 		failureRedirect: "/login/failed",
 	})
 );
 
 router.get("/logout", (req, res) => {
 	req.logout();
-	res.redirect("https://nasa-apod-apis.vercel.app/");
+	res.redirect("https://nasa-apod-rho.vercel.app/");
 });
 
 module.exports = router;
