@@ -51,3 +51,5 @@ mongoose.connect(MONGOOSE_URL, {useNewUrlParser: true})
   .then(()=> app.listen(port, ()=>{
     console.log(`Server is running at port ${port}`);
 }))
+
+module.exports = app;

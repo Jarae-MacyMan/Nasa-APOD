@@ -50,3 +50,4 @@ mongoose.connect(MONGOOSE_URL, {
     console.log("Server is running at port ".concat(port));
   });
 });
+module.exports = app;
