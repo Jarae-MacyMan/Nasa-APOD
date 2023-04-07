@@ -26,7 +26,7 @@ function Home(userDetails) {
 	const [nasaData, setNasaData] = useState({})
 
 	const logout = () => {
-		window.open(`http://localhost:8080/auth/logout`, "_self");
+		window.open(`https://nasa-apod-apis.vercel.app/auth/logout`, "_self");
 	};
 
 	const picOfDay = async () => {
