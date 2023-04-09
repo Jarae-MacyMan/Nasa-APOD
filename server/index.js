@@ -25,16 +25,16 @@ app.use(
 	})
 );
 
-app.use(passport.initialize());
-app.use(passport.session());
-
 app.use(
 	cors({
-		origin: "https://nasa-apod-rho.vercel.app/",
+		origin: "https://nasa-apod-rho.vercel.app",
 		methods: "GET,POST,PUT,DELETE",
 		credentials: true,
 	})
 );
+
+app.use(passport.initialize());
+app.use(passport.session());
 
 
 app.use("/auth", authRoute);
