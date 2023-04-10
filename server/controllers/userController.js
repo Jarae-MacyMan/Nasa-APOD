@@ -11,8 +11,9 @@ class userContoller {
 
 
     static async signinController (req, res) {
+        // res.header("Access-Control-Allow-Origin", "*");
 
-        res.setheader("Access-Control-Allow-Headers: X-Requested-With, Authorization, Origin, Content-Type, Accept")
+        // res.header("Access-Control-Allow-Headers", "X-Requested-With, Authorization, Origin, Content-Type, Accept")
 
     
             // normal-auth
@@ -49,8 +50,9 @@ class userContoller {
     }
 
     static async signupController (req, res) {
-
-        res.setheader("Access-Control-Allow-Headers: X-Requested-With, Authorization, Origin, Content-Type, Accept")
+        
+        // res.header("Access-Control-Allow-Origin", "*");
+        // res.header("Access-Control-Allow-Headers", "X-Requested-With, Authorization, Origin, Content-Type, Accept")
 
         
             // normal form signup
