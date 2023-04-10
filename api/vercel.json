@@ -1,15 +1,9 @@
 {
     
-    "rewrites": [
-        {
-            "source": "/(.*)",
-            "destination": "https://nasa-apod-rho.vercel.app"
-        }
-    ],
-      
+   
     "headers": [
       {
-        "source": "/(.*)",
+        "source": "/api/(.*)",
         "headers": [
           { "key": "Access-Control-Allow-Credentials", "value": "true" },
           { "key": "Access-Control-Allow-Origin", "value": "https://nasa-apod-rho.vercel.app" },
