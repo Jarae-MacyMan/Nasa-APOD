@@ -5,6 +5,7 @@ var router = require("express").Router();
 var passport = require("passport");
 
 router.get("/login/success", function (req, res) {
+  //res.setHeader('Access-Control-Allow-Origin', '*')
   if (req.user) {
     res.status(200).json({
       error: false,
