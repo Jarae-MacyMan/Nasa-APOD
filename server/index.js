@@ -27,7 +27,7 @@ app.use(
 
 app.use(
 	cors({
-		origin: ["https://nasa-apod-rho.vercel.app", "http://localhost:3000", "http://127.0.0.1:3000"],
+		origin: ["https://nasa-apod-rho.vercel.app", "http://localhost:3000", "http://127.0.0.1:3000", "https://nasa-apod-rho.vercel.app/signup", "https://nasa-apod-rho.vercel.app/login", "https://nasa-apod-rho.vercel.app/home"],
 		methods: "GET,POST,PUT,DELETE",
 		credentials: true,
 	})
