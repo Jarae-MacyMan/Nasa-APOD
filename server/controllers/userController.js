@@ -11,6 +11,9 @@ class userContoller {
 
 
     static async signinController (req, res) {
+
+        res.header("Access-Control-Allow-Headers:  Authorization, Origin, Content-Type, Accept")
+
     
             // normal-auth
             const {email, password} = req.body;
@@ -46,6 +49,9 @@ class userContoller {
     }
 
     static async signupController (req, res) {
+
+        res.header("Access-Control-Allow-Headers:  Authorization, Origin, Content-Type, Accept")
+
         
             // normal form signup
 
