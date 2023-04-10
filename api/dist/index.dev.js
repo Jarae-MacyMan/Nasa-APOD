@@ -38,8 +38,8 @@ app.use(cors({
   credentials: true,
   allowedHeaders: ["Content-Type", "Origin", "X-Requested-With", "Accept", "x-client-key", "x-client-token", "x-client-secret", "Authorization"],
   optionSuccessStatus: 200
-}));
-app.use(cors(corsOptions));
+})); //app.use(cors(corsOptions))
+
 app.use(passport.initialize());
 app.use(passport.session());
 app.use("/auth", authRoute);

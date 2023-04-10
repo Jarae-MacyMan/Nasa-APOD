@@ -8,7 +8,7 @@ import Signup from "./pages/Signup";
 
 function App() {
 	const context = useContext(Context);
-	//console.log(context.user)
+	
 
 	//const [user, setUser] = useState(null);
 	
