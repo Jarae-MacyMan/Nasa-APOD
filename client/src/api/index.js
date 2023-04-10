@@ -10,8 +10,8 @@ API.interceptors.request.use((req)=>{
     return req;
 })
 
-export const signIn = (data) => API.post("/users/signin", data)
+// export const signIn = (data) => API.post("/users/signin", data)
 
 
-export const signUp = (data) => API.post("/users/signup", data)
+// export const signUp = (data) => API.post("/users/signup", data)
 
