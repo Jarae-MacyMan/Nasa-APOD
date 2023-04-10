@@ -33,10 +33,11 @@ app.use(cookieSession({
   maxAge: 24 * 60 * 60 * 100
 }));
 app.use(cors({
-  origin: "*",
+  origin: ["https://nasa-apod-rho.vercel.app", "http://localhost:3000", "http://127.0.0.1:3000"],
   methods: "GET,POST,PUT,DELETE",
   credentials: true
 }));
+app.use(cors(corsOptions));
 app.use(passport.initialize());
 app.use(passport.session());
 app.use("/auth", authRoute);

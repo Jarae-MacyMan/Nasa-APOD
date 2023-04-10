@@ -42,7 +42,6 @@ function Signup() {
 				const body = { username, email, password };
 				const response = await fetch("https://nasa-apod-apis.vercel.app/users/signup", {
 				  method: "POST",
-				  headers: { "Content-Type": "application/json" },
 				  body: JSON.stringify(body),
 				});
 				const parseRes = await response.json();
