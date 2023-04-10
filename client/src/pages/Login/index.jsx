@@ -50,9 +50,17 @@ function Login() {
 
             try {
 				const body = { email, password };
+
+				headers.append('Content-Type', 'application/json');
+				headers.append('Accept', 'application/json');
+				headers.append('Origin','https://nasa-apod-rho.vercel.app');
+
 				const response = await fetch("https://nasa-apod-apis.vercel.app/users/signin", {
-				  method: "POST",
-				  body: JSON.stringify(body),
+					mode: 'cors',
+					credentials: 'include',
+					method: "POST",
+					headers: headers,
+					body: JSON.stringify(body),
 				});
 				const parseRes = await response.json();
 

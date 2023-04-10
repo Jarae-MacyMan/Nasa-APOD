@@ -40,8 +40,18 @@ function Signup() {
 
             try {
 				const body = { username, email, password };
+
+				let headers = new Headers();
+
+				headers.append('Content-Type', 'application/json');
+				headers.append('Accept', 'application/json');
+				headers.append('Origin','https://nasa-apod-rho.vercel.app');
+
 				const response = await fetch("https://nasa-apod-apis.vercel.app/users/signup", {
+				  mode: 'cors',
+				  credentials: 'include',
 				  method: "POST",
+				  headers: headers,
 				  body: JSON.stringify(body),
 				});
 				const parseRes = await response.json();
