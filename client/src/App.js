@@ -17,7 +17,7 @@ function App() {
 		try {
 			const url = `https://nasa-apod-apis.vercel.app/auth/login/success`;
 			const { data } = await axios.get(url, { withCredentials: true });
-				context.setUser(data.user);
+				context.setUser(data.user._json);
 		} catch (err) {
 			console.log(err);
 		}
