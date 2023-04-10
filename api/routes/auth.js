@@ -2,15 +2,15 @@ const router = require("express").Router();
 const passport = require("passport");
 
 router.get("/login/success", (req, res) => {
-	res.setHeader('Access-Control-Allow-Credentials', true)
-	res.setHeader('Access-Control-Allow-Origin', '*')
-	// another common pattern
-	// res.setHeader('Access-Control-Allow-Origin', req.headers.origin);
-	res.setHeader('Access-Control-Allow-Methods', 'GET,OPTIONS,PATCH,DELETE,POST,PUT')
-	res.setHeader(
-	  'Access-Control-Allow-Headers',
-	  'X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version'
-	)
+	// res.setHeader('Access-Control-Allow-Credentials', true)
+	// res.setHeader('Access-Control-Allow-Origin', '*')
+	// // another common pattern
+	// // res.setHeader('Access-Control-Allow-Origin', req.headers.origin);
+	// res.setHeader('Access-Control-Allow-Methods', 'GET,OPTIONS,PATCH,DELETE,POST,PUT')
+	// res.setHeader(
+	//   'Access-Control-Allow-Headers',
+	//   'X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version'
+	// )
 
 	if (req.user) {
 		res.status(200).json({
@@ -24,15 +24,15 @@ router.get("/login/success", (req, res) => {
 });
 
 router.get("/login/failed", (req, res) => {
-	res.setHeader('Access-Control-Allow-Credentials', true)
-	res.setHeader('Access-Control-Allow-Origin', '*')
-	// another common pattern
-	// res.setHeader('Access-Control-Allow-Origin', req.headers.origin);
-	res.setHeader('Access-Control-Allow-Methods', 'GET,OPTIONS,PATCH,DELETE,POST,PUT')
-	res.setHeader(
-	  'Access-Control-Allow-Headers',
-	  'X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version'
-	)
+	// res.setHeader('Access-Control-Allow-Credentials', true)
+	// res.setHeader('Access-Control-Allow-Origin', '*')
+	// // another common pattern
+	// // res.setHeader('Access-Control-Allow-Origin', req.headers.origin);
+	// res.setHeader('Access-Control-Allow-Methods', 'GET,OPTIONS,PATCH,DELETE,POST,PUT')
+	// res.setHeader(
+	//   'Access-Control-Allow-Headers',
+	//   'X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version'
+	// )
 
 	res.status(401).json({
 		error: true,
@@ -51,15 +51,15 @@ router.get(
 );
 
 router.get("/logout", (req, res) => {
-	 res.setHeader('Access-Control-Allow-Credentials', true)
-	res.setHeader('Access-Control-Allow-Origin', '*')
-	// another common pattern
-	// res.setHeader('Access-Control-Allow-Origin', req.headers.origin);
-	res.setHeader('Access-Control-Allow-Methods', 'GET,OPTIONS,PATCH,DELETE,POST,PUT')
-	res.setHeader(
-		'Access-Control-Allow-Headers',
-		'X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version'
-	)
+	//  res.setHeader('Access-Control-Allow-Credentials', true)
+	// res.setHeader('Access-Control-Allow-Origin', '*')
+	// // another common pattern
+	// // res.setHeader('Access-Control-Allow-Origin', req.headers.origin);
+	// res.setHeader('Access-Control-Allow-Methods', 'GET,OPTIONS,PATCH,DELETE,POST,PUT')
+	// res.setHeader(
+	// 	'Access-Control-Allow-Headers',
+	// 	'X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version'
+	// )
 
 	req.logout();
 	res.redirect("https://nasa-apod-rho.vercel.app");
