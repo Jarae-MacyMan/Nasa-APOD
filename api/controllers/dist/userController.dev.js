@@ -31,6 +31,7 @@ function () {
         while (1) {
           switch (_context.prev = _context.next) {
             case 0:
+              res.setHeader('Access-Control-Allow-Origin', '*');
               res.setHeader('Access-Control-Allow-Origin', '*'); // res.header("Access-Control-Allow-Origin", "*");
               // res.header("Access-Control-Allow-Headers", "X-Requested-With, Authorization, Origin, Content-Type, Accept")
               // normal-auth
@@ -38,7 +39,7 @@ function () {
               _req$body = req.body, email = _req$body.email, password = _req$body.password;
 
               if (!(email === "" || password === "")) {
-                _context.next = 4;
+                _context.next = 5;
                 break;
               }
 
@@ -46,17 +47,17 @@ function () {
                 message: "Invalid field!"
               }));
 
-            case 4:
-              _context.next = 6;
+            case 5:
+              _context.next = 7;
               return regeneratorRuntime.awrap(User.findOne({
                 email: email
               }));
 
-            case 6:
+            case 7:
               existingUser = _context.sent;
 
               if (existingUser) {
-                _context.next = 9;
+                _context.next = 10;
                 break;
               }
 
@@ -64,15 +65,15 @@ function () {
                 message: "User does not exist!"
               }));
 
-            case 9:
-              _context.next = 11;
+            case 10:
+              _context.next = 12;
               return regeneratorRuntime.awrap(bcrypt.compare(password, existingUser.password));
 
-            case 11:
+            case 12:
               isPasswordOk = _context.sent;
 
               if (isPasswordOk) {
-                _context.next = 14;
+                _context.next = 15;
                 break;
               }
 
@@ -80,7 +81,7 @@ function () {
                 message: "Invalid credintials!"
               }));
 
-            case 14:
+            case 15:
               token = jwt.sign({
                 email: existingUser.email,
                 id: existingUser._id
@@ -96,7 +97,7 @@ function () {
               //         .json({message: "Something went wrong!"})
               // }
 
-            case 16:
+            case 17:
             case "end":
               return _context.stop();
           }

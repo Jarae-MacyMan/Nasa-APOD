@@ -2,7 +2,7 @@ const router = require("express").Router();
 const passport = require("passport");
 
 router.get("/login/success", (req, res) => {
-	//res.setHeader('Access-Control-Allow-Origin', '*')
+	res.setHeader('Access-Control-Allow-Origin', '*')
 
 	if (req.user) {
 		res.status(200).json({
@@ -16,6 +16,8 @@ router.get("/login/success", (req, res) => {
 });
 
 router.get("/login/failed", (req, res) => {
+	res.setHeader('Access-Control-Allow-Origin', '*')
+
 	res.status(401).json({
 		error: true,
 		message: "Log in failure",
@@ -33,6 +35,8 @@ router.get(
 );
 
 router.get("/logout", (req, res) => {
+	res.setHeader('Access-Control-Allow-Origin', '*')
+
 	req.logout();
 	res.redirect("https://nasa-apod-rho.vercel.app");
 });

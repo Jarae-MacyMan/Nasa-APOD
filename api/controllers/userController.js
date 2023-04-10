@@ -12,6 +12,8 @@ class userContoller {
 
     static async signinController (req, res) {
         res.setHeader('Access-Control-Allow-Origin', '*')
+        	res.setHeader('Access-Control-Allow-Origin', '*')
+
 
         // res.header("Access-Control-Allow-Origin", "*");
 
