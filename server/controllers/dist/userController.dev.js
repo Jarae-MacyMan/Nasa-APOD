@@ -31,7 +31,7 @@ function () {
         while (1) {
           switch (_context.prev = _context.next) {
             case 0:
-              res.header("Access-Control-Allow-Headers:  Authorization, Origin, Content-Type, Accept"); // normal-auth
+              res.setheader("Access-Control-Allow-Headers: X-Requested-With, Authorization, Origin, Content-Type, Accept"); // normal-auth
 
               _req$body = req.body, email = _req$body.email, password = _req$body.password;
 
@@ -110,7 +110,7 @@ function () {
         while (1) {
           switch (_context2.prev = _context2.next) {
             case 0:
-              res.header("Access-Control-Allow-Headers:  Authorization, Origin, Content-Type, Accept"); // normal form signup
+              res.setheader("Access-Control-Allow-Headers: X-Requested-With, Authorization, Origin, Content-Type, Accept"); // normal form signup
 
               _req$body2 = req.body, username = _req$body2.username, email = _req$body2.email, password = _req$body2.password; //try {
 
