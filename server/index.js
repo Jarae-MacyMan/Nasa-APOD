@@ -27,7 +27,7 @@ app.use(
 
 app.use(
 	cors({
-		origin: "https://nasa-apod-rho.vercel.app",
+		origin: ["https://nasa-apod-rho.vercel.app"],
 		methods: "GET,POST,PUT,DELETE",
 		credentials: true,
 	})

@@ -33,7 +33,7 @@ app.use(cookieSession({
   maxAge: 24 * 60 * 60 * 100
 }));
 app.use(cors({
-  origin: "https://nasa-apod-rho.vercel.app",
+  origin: ["https://nasa-apod-rho.vercel.app"],
   methods: "GET,POST,PUT,DELETE",
   credentials: true
 }));
