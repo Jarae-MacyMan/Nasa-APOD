@@ -31,15 +31,17 @@ function () {
         while (1) {
           switch (_context.prev = _context.next) {
             case 0:
-              res.setHeader('Access-Control-Allow-Origin', '*');
-              res.setHeader('Access-Control-Allow-Origin', '*'); // res.header("Access-Control-Allow-Origin", "*");
-              // res.header("Access-Control-Allow-Headers", "X-Requested-With, Authorization, Origin, Content-Type, Accept")
-              // normal-auth
+              res.setHeader('Access-Control-Allow-Credentials', true);
+              res.setHeader('Access-Control-Allow-Origin', '*'); // another common pattern
+              // res.setHeader('Access-Control-Allow-Origin', req.headers.origin);
+
+              res.setHeader('Access-Control-Allow-Methods', 'GET,OPTIONS,PATCH,DELETE,POST,PUT');
+              res.setHeader('Access-Control-Allow-Headers', 'X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version'); // normal-auth
 
               _req$body = req.body, email = _req$body.email, password = _req$body.password;
 
               if (!(email === "" || password === "")) {
-                _context.next = 5;
+                _context.next = 7;
                 break;
               }
 
@@ -47,17 +49,17 @@ function () {
                 message: "Invalid field!"
               }));
 
-            case 5:
-              _context.next = 7;
+            case 7:
+              _context.next = 9;
               return regeneratorRuntime.awrap(User.findOne({
                 email: email
               }));
 
-            case 7:
+            case 9:
               existingUser = _context.sent;
 
               if (existingUser) {
-                _context.next = 10;
+                _context.next = 12;
                 break;
               }
 
@@ -65,15 +67,15 @@ function () {
                 message: "User does not exist!"
               }));
 
-            case 10:
-              _context.next = 12;
+            case 12:
+              _context.next = 14;
               return regeneratorRuntime.awrap(bcrypt.compare(password, existingUser.password));
 
-            case 12:
+            case 14:
               isPasswordOk = _context.sent;
 
               if (isPasswordOk) {
-                _context.next = 15;
+                _context.next = 17;
                 break;
               }
 
@@ -81,7 +83,7 @@ function () {
                 message: "Invalid credintials!"
               }));
 
-            case 15:
+            case 17:
               token = jwt.sign({
                 email: existingUser.email,
                 id: existingUser._id
@@ -97,7 +99,7 @@ function () {
               //         .json({message: "Something went wrong!"})
               // }
 
-            case 17:
+            case 19:
             case "end":
               return _context.stop();
           }
@@ -113,14 +115,17 @@ function () {
         while (1) {
           switch (_context2.prev = _context2.next) {
             case 0:
-              res.setHeader('Access-Control-Allow-Origin', '*'); // res.header("Access-Control-Allow-Origin", "*");
-              // res.header("Access-Control-Allow-Headers", "X-Requested-With, Authorization, Origin, Content-Type, Accept")
-              // normal form signup
+              res.setHeader('Access-Control-Allow-Credentials', true);
+              res.setHeader('Access-Control-Allow-Origin', '*'); // another common pattern
+              // res.setHeader('Access-Control-Allow-Origin', req.headers.origin);
+
+              res.setHeader('Access-Control-Allow-Methods', 'GET,OPTIONS,PATCH,DELETE,POST,PUT');
+              res.setHeader('Access-Control-Allow-Headers', 'X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version'); // normal form signup
 
               _req$body2 = req.body, username = _req$body2.username, email = _req$body2.email, password = _req$body2.password; //try {
 
               if (!(email === "" || password === "" || username === "" && password.length >= 4)) {
-                _context2.next = 4;
+                _context2.next = 7;
                 break;
               }
 
@@ -128,17 +133,17 @@ function () {
                 message: "Invalid field!"
               }));
 
-            case 4:
-              _context2.next = 6;
+            case 7:
+              _context2.next = 9;
               return regeneratorRuntime.awrap(User.findOne({
                 email: email
               }));
 
-            case 6:
+            case 9:
               existingUser = _context2.sent;
 
               if (!existingUser) {
-                _context2.next = 9;
+                _context2.next = 12;
                 break;
               }
 
@@ -146,20 +151,20 @@ function () {
                 message: "User already exist!"
               }));
 
-            case 9:
-              _context2.next = 11;
+            case 12:
+              _context2.next = 14;
               return regeneratorRuntime.awrap(bcrypt.hash(password, 12));
 
-            case 11:
+            case 14:
               hashedPassword = _context2.sent;
-              _context2.next = 14;
+              _context2.next = 17;
               return regeneratorRuntime.awrap(User.create({
                 email: email,
                 password: hashedPassword,
                 username: username
               }));
 
-            case 14:
+            case 17:
               result = _context2.sent;
               token = jwt.sign({
                 email: result.email,
@@ -176,7 +181,7 @@ function () {
               //         .json({message: "Something went wrong!"})
               // }
 
-            case 17:
+            case 20:
             case "end":
               return _context2.stop();
           }
