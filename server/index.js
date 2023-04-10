@@ -27,13 +27,11 @@ app.use(
 
 app.use(
 	cors({
-		//origin: ['https://nasa-apod-rho.vercel.app', 'http://localhost:3000', 'http://127.0.0.1:3000'],
 		origin: "https://nasa-apod-rho.vercel.app",
 		methods: "GET,POST,PUT,DELETE",
 		credentials: true,
 	})
 );
-
 
 app.use(passport.initialize());
 app.use(passport.session());
