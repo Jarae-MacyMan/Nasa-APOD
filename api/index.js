@@ -31,6 +31,7 @@ app.use(
 		methods: ["GET", "POST", "PUT", "DELETE", "PATCH", "HEAD", "OPTIONS"],
 		credentials: true,
 		allowedHeaders: ["Content-Type", "Origin", "X-Requested-With", "Accept", "x-client-key", "x-client-token", "x-client-secret", "Authorization"],
+		optionSuccessStatus:200
 	})
 );
 

@@ -36,7 +36,8 @@ app.use(cors({
   origin: ["https://nasa-apod-rho.vercel.app", "http://localhost:3000", "https://nasa-apod-rho.vercel.app/signup", "https://nasa-apod-rho.vercel.app/login", "https://nasa-apod-rho.vercel.app/home", "https://nasa-apod-apis.vercel.app/auth/login/success", "https://nasa-apod-rho.vercel.app/users/signup", "https://nasa-apod-rho.vercel.app/users/login", "https://nasa-apod-apis.vercel.app"],
   methods: ["GET", "POST", "PUT", "DELETE", "PATCH", "HEAD", "OPTIONS"],
   credentials: true,
-  allowedHeaders: ["Content-Type", "Origin", "X-Requested-With", "Accept", "x-client-key", "x-client-token", "x-client-secret", "Authorization"]
+  allowedHeaders: ["Content-Type", "Origin", "X-Requested-With", "Accept", "x-client-key", "x-client-token", "x-client-secret", "Authorization"],
+  optionSuccessStatus: 200
 }));
 app.use(cors(corsOptions));
 app.use(passport.initialize());
